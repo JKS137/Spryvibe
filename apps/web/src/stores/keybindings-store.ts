@@ -163,7 +163,7 @@ export const useKeybindingsStore = create<KeybindingsState>()(
       },
     }),
     {
-      name: "opencut-keybindings",
+      name: "spryvibe-keybindings",
       version: 2,
     }
   )

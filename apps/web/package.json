@@ -1,5 +1,5 @@
 {
-  "name": "opencut",
+  "name": "spryvibe",
   "version": "0.1.0",
   "private": true,
   "packageManager": "bun@1.2.18",
@@ -21,8 +21,8 @@
     "@ffmpeg/util": "^0.12.2",
     "@hello-pangea/dnd": "^18.0.1",
     "@hookform/resolvers": "^3.9.1",
-    "@opencut/auth": "workspace:*",
-    "@opencut/db": "workspace:*",
+    "@spryvibe/auth": "workspace:*",
+    "@spryvibe/db": "workspace:*",
     "@radix-ui/react-separator": "^1.1.7",
     "@t3-oss/env-core": "^0.13.8",
     "@t3-oss/env-nextjs": "^0.13.8",

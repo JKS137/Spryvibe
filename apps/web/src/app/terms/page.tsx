@@ -7,13 +7,13 @@ import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 
 export const metadata: Metadata = {
-  title: "Terms of Service - OpenCut",
+  title: "Terms of Service - SpryVibe Video Editor",
   description:
-    "OpenCut's Terms of Service. Fair, transparent terms for our free and open-source video editor.",
+    "SpryVibe Video Editor's Terms of Service. Fair, transparent terms for our free and open-source video editor.",
   openGraph: {
-    title: "Terms of Service - OpenCut",
+    title: "Terms of Service - SpryVibe Video Editor",
     description:
-      "OpenCut's Terms of Service. Fair, transparent terms for our free and open-source video editor.",
+      "SpryVibe Video Editor's Terms of Service. Fair, transparent terms for our free and open-source video editor.",
     type: "website",
   },
 };
@@ -31,7 +31,7 @@ export default function TermsPage() {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10">
               <Link
-                href="https://github.com/OpenCut-app/OpenCut"
+                href="https://github.com/JKS137/Spryvibe"
                 target="_blank"
               >
                 <Badge variant="secondary" className="gap-2 mb-6">
@@ -51,10 +51,10 @@ export default function TermsPage() {
               <CardContent className="p-8 text-base leading-relaxed space-y-8">
                 <section>
                   <h2 className="text-2xl font-semibold mb-4">
-                    Welcome to OpenCut
+                    Welcome to SpryVibe Video Editor
                   </h2>
                   <p className="mb-4">
-                    OpenCut is a free, open-source video editor that runs in
+                    SpryVibe Video Editor is a free, open-source video editor that runs in
                     your browser. By using our service, you agree to these
                     terms. We've designed these terms to be fair and protect
                     both you and our project.
@@ -70,11 +70,11 @@ export default function TermsPage() {
                     Your Content, Your Rights
                   </h2>
                   <p className="mb-4">
-                    <strong>You own everything you create.</strong> OpenCut
+                    <strong>You own everything you create.</strong> SpryVibe Video Editor
                     processes your videos locally on your device, so we never
                     have access to your content. We make no claims to ownership,
                     licensing, or rights over your videos, projects, or any
-                    content you create using OpenCut.
+                    content you create using SpryVibe Video Editor.
                   </p>
                   <ul className="list-disc pl-6 mb-4 space-y-2">
                     <li>
@@ -89,32 +89,32 @@ export default function TermsPage() {
                       You can export and use your content however you choose
                     </li>
                     <li>
-                      No watermarks, no licensing restrictions from OpenCut
+                      No watermarks, no licensing restrictions from SpryVibe Video Editor
                     </li>
                   </ul>
                 </section>
 
                 <section>
                   <h2 className="text-2xl font-semibold mb-4">
-                    How You Can Use OpenCut
+                    How You Can Use SpryVibe Video Editor
                   </h2>
                   <p className="mb-4">
-                    OpenCut is free for personal and commercial use. You can:
+                    SpryVibe Video Editor is free for personal and commercial use. You can:
                   </p>
                   <ul className="list-disc pl-6 mb-4 space-y-2">
                     <li>
                       Create videos for personal, educational, or commercial
                       purposes
                     </li>
-                    <li>Use OpenCut for client work and paid projects</li>
-                    <li>Share and distribute videos created with OpenCut</li>
+                    <li>Use SpryVibe Video Editor for client work and paid projects</li>
+                    <li>Share and distribute videos created with SpryVibe Video Editor</li>
                     <li>
-                      Modify and distribute the OpenCut software (under MIT
+                      Modify and distribute the SpryVibe Video Editor software (under MIT
                       license)
                     </li>
                   </ul>
                   <p>
-                    <strong>What we ask:</strong> Don't use OpenCut for illegal
+                    <strong>What we ask:</strong> Don't use SpryVibe Video Editor for illegal
                     activities, harassment, or creating harmful content. Be
                     respectful of others and follow applicable laws.
                   </p>
@@ -136,7 +136,7 @@ export default function TermsPage() {
                     <li>You can delete your account at any time</li>
                   </ul>
                   <p>
-                    OpenCut is provided "as is" without warranties. While we
+                    SpryVibe Video Editor is provided "as is" without warranties. While we
                     strive for reliability, we can't guarantee uninterrupted
                     service.
                   </p>
@@ -147,20 +147,20 @@ export default function TermsPage() {
                     Open Source Benefits
                   </h2>
                   <p className="mb-4">
-                    Because OpenCut is open source, you have additional rights:
+                    Because SpryVibe Video Editor is open source, you have additional rights:
                   </p>
                   <ul className="list-disc pl-6 mb-4 space-y-2">
                     <li>
                       Review our code to see exactly how we handle your data
                     </li>
-                    <li>Self-host OpenCut on your own servers</li>
+                    <li>Self-host SpryVibe Video Editor on your own servers</li>
                     <li>Modify the software to suit your needs</li>
                     <li>Contribute improvements back to the community</li>
                   </ul>
                   <p>
                     View our source code and license on{" "}
                     <a
-                      href="https://github.com/OpenCut-app/OpenCut"
+                      href="https://github.com/JKS137/Spryvibe"
                       target="_blank"
                       rel="noopener"
                       className="text-primary hover:underline"
@@ -176,7 +176,7 @@ export default function TermsPage() {
                     Third-Party Content
                   </h2>
                   <p className="mb-4">
-                    When using OpenCut, make sure you have the right to use any
+                    When using SpryVibe Video Editor, make sure you have the right to use any
                     content you import:
                   </p>
                   <ul className="list-disc pl-6 mb-4 space-y-2">
@@ -202,7 +202,7 @@ export default function TermsPage() {
                     Limitations and Liability
                   </h2>
                   <p className="mb-4">
-                    OpenCut is provided free of charge. To the extent permitted
+                    SpryVibe Video Editor is provided free of charge. To the extent permitted
                     by law:
                   </p>
                   <ul className="list-disc pl-6 mb-4 space-y-2">
@@ -228,7 +228,7 @@ export default function TermsPage() {
                   <h2 className="text-2xl font-semibold mb-4">
                     Service Changes
                   </h2>
-                  <p className="mb-4">We may update OpenCut and these terms:</p>
+                  <p className="mb-4">We may update SpryVibe Video Editor and these terms:</p>
                   <ul className="list-disc pl-6 mb-4 space-y-2">
                     <li>
                       We'll notify you of significant changes to these terms
@@ -247,13 +247,13 @@ export default function TermsPage() {
                 <section>
                   <h2 className="text-2xl font-semibold mb-4">Termination</h2>
                   <p className="mb-4">
-                    You can stop using OpenCut at any time:
+                    You can stop using SpryVibe Video Editor at any time:
                   </p>
                   <ul className="list-disc pl-6 mb-4 space-y-2">
                     <li>Delete your account through your profile settings</li>
                     <li>Clear your browser data to remove local projects</li>
                     <li>
-                      Your content remains yours even if you stop using OpenCut
+                      Your content remains yours even if you stop using SpryVibe Video Editor
                     </li>
                     <li>
                       We may suspend accounts for violations of these terms
@@ -271,7 +271,7 @@ export default function TermsPage() {
                   <p className="mb-4">
                     Contact us through our{" "}
                     <a
-                      href="https://github.com/OpenCut-app/OpenCut/issues"
+                      href="https://github.com/JKS137/Spryvibe/issues"
                       target="_blank"
                       rel="noopener"
                       className="text-primary hover:underline"
@@ -280,14 +280,14 @@ export default function TermsPage() {
                     </a>
                     , email us at{" "}
                     <a
-                      href="mailto:oss@opencut.app"
+                      href="mailto:oss@spryvibe.app"
                       className="text-primary hover:underline"
                     >
-                      oss@opencut.app
+                      oss@spryvibe.app
                     </a>
                     , or reach out on{" "}
                     <a
-                      href="https://x.com/opencutapp"
+                      href="https://x.com/SpryVibeApp"
                       target="_blank"
                       rel="noopener"
                       className="text-primary hover:underline"

@@ -12,12 +12,12 @@ export function Header() {
     <Link href="/" className="flex items-center gap-3">
       <Image
         src="/logo.svg"
-        alt="OpenCut Logo"
+        alt="SpryVibe Video Editor"
         className="invert dark:invert-0"
         width={32}
         height={32}
       />
-      <span className="text-xl font-medium hidden md:block">OpenCut</span>
+      <span className="text-xl font-medium hidden md:block">SpryVibe</span>
     </Link>
   );
 

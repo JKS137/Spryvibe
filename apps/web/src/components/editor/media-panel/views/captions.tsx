@@ -30,7 +30,7 @@ export const languages: Language[] = [
   { code: "CN", name: "Chinese" },
 ];
 
-const PRIVACY_DIALOG_KEY = "opencut-transcription-privacy-accepted";
+const PRIVACY_DIALOG_KEY = "spryvibe-transcription-privacy-accepted";
 
 export function Captions() {
   const [selectedCountry, setSelectedCountry] = useState("auto");

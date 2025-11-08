@@ -33,7 +33,7 @@ export function Hero() {
           className="mb-4 flex justify-center"
         >
           <SponsorButton
-            href="https://vercel.com/home?utm_source=opencut"
+            href="https://vercel.com/home?utm_source=spryvibe"
             logo={VercelIcon}
             companyName="Vercel"
           />

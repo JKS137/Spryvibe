@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-OpenCut is a free, open-source video editor built with Next.js, focusing on privacy (no server processing), multi-track timeline editing, and real-time preview. The project is a monorepo using Turborepo with multiple apps including a web application, desktop app (Tauri), background remover tools, and transcription services.
+SpryVibe Video Editor is a free, open-source video editor built with Next.js, focusing on privacy (no server processing), multi-track timeline editing, and real-time preview. The project is a monorepo using Turborepo with multiple apps including a web application, desktop app (Tauri), background remover tools, and transcription services.
 
 ## Essential Commands
 
@@ -105,7 +105,7 @@ The application uses **Zustand** for state management with separate stores for d
 **Required environment variables (apps/web/.env.local):**
 ```bash
 # Database
-DATABASE_URL="postgresql://opencut:opencutthegoat@localhost:5432/opencut"
+DATABASE_URL="postgresql://spryvibe:spryvibepass@localhost:5432/spryvibe"
 
 # Authentication
 BETTER_AUTH_SECRET="your-generated-secret-here"

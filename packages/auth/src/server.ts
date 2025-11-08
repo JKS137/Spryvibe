@@ -1,6 +1,6 @@
 import { betterAuth, RateLimit } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
-import { db } from "@opencut/db";
+import { db } from "@spryvibe/db";
 import { keys } from "./keys";
 import { Redis } from "@upstash/redis";
 
@@ -43,7 +43,7 @@ export const auth = betterAuth({
     },
   },
   baseURL: NEXT_PUBLIC_BETTER_AUTH_URL,
-  appName: "OpenCut",
+  appName: "SpryVibe Video Editor",
   trustedOrigins: ["http://localhost:3000"],
 });
 

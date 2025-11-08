@@ -44,8 +44,8 @@ export function Hero() {
           transition={{ delay: 0.2, duration: 0.8 }}
           className="inline-block font-bold tracking-tighter text-4xl md:text-[4rem]"
         >
-          <h1>The Open Source</h1>
-          <Handlebars>Video Editor</Handlebars>
+          <h1>Welcome to</h1>
+          <Handlebars>SpryVibe Video Editor</Handlebars>
         </motion.div>
 
         <motion.p
@@ -54,8 +54,7 @@ export function Hero() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.8 }}
         >
-          A simple but powerful video editor that gets the job done. Works on
-          any platform.
+          A simple but powerful video editor that gets the job done.
         </motion.p>
 
         <motion.div

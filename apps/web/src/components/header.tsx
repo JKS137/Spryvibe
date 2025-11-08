@@ -2,21 +2,16 @@
 
 import Link from "next/link";
 import { Button } from "./ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Video } from "lucide-react";
 import { HeaderBase } from "./header-base";
-import Image from "next/image";
 import { ThemeToggle } from "./theme-toggle";
 
 export function Header() {
   const leftContent = (
     <Link href="/" className="flex items-center gap-3">
-      <Image
-        src="/logo.svg"
-        alt="SpryVibe Video Editor"
-        className="invert dark:invert-0"
-        width={32}
-        height={32}
-      />
+      <div className="rounded-lg bg-primary/10 p-2">
+        <Video className="h-5 w-5 text-primary" />
+      </div>
       <span className="text-xl font-medium hidden md:block">SpryVibe</span>
     </Link>
   );

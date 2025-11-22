@@ -1,5 +1,6 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
+import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 
 interface LensOverlayProps {
@@ -8,21 +9,27 @@ interface LensOverlayProps {
     rightEye: { x: number; y: number }[];
     noseBridge: { x: number; y: number }[];
     faceRotation: { pitch: number; yaw: number; roll: number };
+    faceBlendshapes?: any[];
   } | null;
   effect: "glowing-eyes" | "sunglasses" | null;
   videoWidth: number;
   videoHeight: number;
   glowIntensity?: number;
+  emotionTriggerEnabled?: boolean;
 }
 
 function GlowingEyes({
   leftEye,
   rightEye,
   intensity = 1.0,
+  blendshapes,
+  emotionTriggerEnabled,
 }: {
   leftEye: { x: number; y: number }[];
   rightEye: { x: number; y: number }[];
   intensity?: number;
+  blendshapes?: any[];
+  emotionTriggerEnabled?: boolean;
 }) {
   const leftGlowRef = useRef<THREE.Mesh>(null);
   const rightGlowRef = useRef<THREE.Mesh>(null);
@@ -30,12 +37,24 @@ function GlowingEyes({
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
     const pulse = Math.sin(time * 2) * 0.3 + 0.7;
+    
+    let finalIntensity = intensity;
+    
+    // Apply emotion trigger (smile)
+    if (emotionTriggerEnabled && blendshapes) {
+      const smileLeft = blendshapes.find((b: any) => b.categoryName === "mouthSmileLeft")?.score || 0;
+      const smileRight = blendshapes.find((b: any) => b.categoryName === "mouthSmileRight")?.score || 0;
+      const smileScore = (smileLeft + smileRight) / 2;
+      
+      // Boost intensity when smiling
+      finalIntensity = intensity * (1 + smileScore * 2);
+    }
 
     if (leftGlowRef.current && rightGlowRef.current) {
       const mat = leftGlowRef.current.material as THREE.MeshBasicMaterial;
-      mat.opacity = pulse * intensity;
+      mat.opacity = pulse * finalIntensity;
       
-      (rightGlowRef.current.material as THREE.MeshBasicMaterial).opacity = pulse * intensity;
+      (rightGlowRef.current.material as THREE.MeshBasicMaterial).opacity = pulse * finalIntensity;
     }
   });
 
@@ -99,6 +118,14 @@ function Sunglasses({
   rotation: { pitch: number; yaw: number; roll: number };
 }) {
   const groupRef = useRef<THREE.Group>(null);
+  const [modelError, setModelError] = useState(false);
+  
+  // Try to load a GLTF model - using a public placeholder URL or local asset
+  // In a real app, this would be a local asset like "/models/sunglasses.glb"
+  const { scene } = useGLTF("https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/sunglasses/model.gltf", undefined, undefined, (error) => {
+    console.warn("Failed to load sunglasses model, falling back to geometry", error);
+    setModelError(true);
+  }) as any;
 
   useEffect(() => {
     if (groupRef.current) {
@@ -132,47 +159,65 @@ function Sunglasses({
   );
   const scale = eyeDistance * 15;
 
-  const lensWidth = 1.2;
-  const lensHeight = 0.8;
-  const bridgeWidth = 0.4;
-  const frameThickness = 0.08;
+  // Fallback geometry if model fails to load or is still loading
+  const renderFallback = () => {
+    const lensWidth = 1.2;
+    const lensHeight = 0.8;
+    const bridgeWidth = 0.4;
+    const frameThickness = 0.08;
+
+    return (
+      <>
+        <mesh position={[-lensWidth / 2 - bridgeWidth / 2, 0, 0]}>
+          <boxGeometry args={[lensWidth, lensHeight, 0.05]} />
+          <meshStandardMaterial color="#000000" transparent opacity={0.7} />
+        </mesh>
+
+        <mesh position={[lensWidth / 2 + bridgeWidth / 2, 0, 0]}>
+          <boxGeometry args={[lensWidth, lensHeight, 0.05]} />
+          <meshStandardMaterial color="#000000" transparent opacity={0.7} />
+        </mesh>
+
+        <mesh position={[0, 0, 0]}>
+          <boxGeometry args={[bridgeWidth, frameThickness, 0.05]} />
+          <meshStandardMaterial color="#333333" />
+        </mesh>
+
+        <mesh position={[-lensWidth / 2 - bridgeWidth / 2, lensHeight / 2, 0]}>
+          <boxGeometry args={[lensWidth + frameThickness, frameThickness, 0.06]} />
+          <meshStandardMaterial color="#333333" />
+        </mesh>
+
+        <mesh position={[-lensWidth / 2 - bridgeWidth / 2, -lensHeight / 2, 0]}>
+          <boxGeometry args={[lensWidth + frameThickness, frameThickness, 0.06]} />
+          <meshStandardMaterial color="#333333" />
+        </mesh>
+
+        <mesh position={[lensWidth / 2 + bridgeWidth / 2, lensHeight / 2, 0]}>
+          <boxGeometry args={[lensWidth + frameThickness, frameThickness, 0.06]} />
+          <meshStandardMaterial color="#333333" />
+        </mesh>
+
+        <mesh position={[lensWidth / 2 + bridgeWidth / 2, -lensHeight / 2, 0]}>
+          <boxGeometry args={[lensWidth + frameThickness, frameThickness, 0.06]} />
+          <meshStandardMaterial color="#333333" />
+        </mesh>
+      </>
+    );
+  };
 
   return (
     <group ref={groupRef} position={[centerX, centerY, 0]} scale={[scale, scale, scale]}>
-      <mesh position={[-lensWidth / 2 - bridgeWidth / 2, 0, 0]}>
-        <boxGeometry args={[lensWidth, lensHeight, 0.05]} />
-        <meshStandardMaterial color="#000000" transparent opacity={0.7} />
-      </mesh>
-
-      <mesh position={[lensWidth / 2 + bridgeWidth / 2, 0, 0]}>
-        <boxGeometry args={[lensWidth, lensHeight, 0.05]} />
-        <meshStandardMaterial color="#000000" transparent opacity={0.7} />
-      </mesh>
-
-      <mesh position={[0, 0, 0]}>
-        <boxGeometry args={[bridgeWidth, frameThickness, 0.05]} />
-        <meshStandardMaterial color="#333333" />
-      </mesh>
-
-      <mesh position={[-lensWidth / 2 - bridgeWidth / 2, lensHeight / 2, 0]}>
-        <boxGeometry args={[lensWidth + frameThickness, frameThickness, 0.06]} />
-        <meshStandardMaterial color="#333333" />
-      </mesh>
-
-      <mesh position={[-lensWidth / 2 - bridgeWidth / 2, -lensHeight / 2, 0]}>
-        <boxGeometry args={[lensWidth + frameThickness, frameThickness, 0.06]} />
-        <meshStandardMaterial color="#333333" />
-      </mesh>
-
-      <mesh position={[lensWidth / 2 + bridgeWidth / 2, lensHeight / 2, 0]}>
-        <boxGeometry args={[lensWidth + frameThickness, frameThickness, 0.06]} />
-        <meshStandardMaterial color="#333333" />
-      </mesh>
-
-      <mesh position={[lensWidth / 2 + bridgeWidth / 2, -lensHeight / 2, 0]}>
-        <boxGeometry args={[lensWidth + frameThickness, frameThickness, 0.06]} />
-        <meshStandardMaterial color="#333333" />
-      </mesh>
+      {scene && !modelError ? (
+        <primitive 
+          object={scene} 
+          scale={[0.5, 0.5, 0.5]} 
+          rotation={[0, Math.PI, 0]} // Adjust based on model orientation
+          position={[0, 0, 0]} 
+        />
+      ) : (
+        renderFallback()
+      )}
     </group>
   );
 }
@@ -183,6 +228,7 @@ export function LensOverlay({
   videoWidth,
   videoHeight,
   glowIntensity = 1.0,
+  emotionTriggerEnabled = false,
 }: LensOverlayProps) {
   if (!landmarks || !effect) return null;
 
@@ -203,6 +249,8 @@ export function LensOverlay({
             leftEye={landmarks.leftEye}
             rightEye={landmarks.rightEye}
             intensity={glowIntensity}
+            blendshapes={landmarks.faceBlendshapes}
+            emotionTriggerEnabled={emotionTriggerEnabled}
           />
         )}
 

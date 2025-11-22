@@ -1,27 +1,3 @@
-import modal
-from pydantic import BaseModel
-
-app = modal.App("opencut-transcription")
-
-class TranscribeRequest(BaseModel):
-    filename: str
-    language: str = "auto"
-    decryptionKey: str = None
-    iv: str = None
-
-@app.function(
-    image=modal.Image.debian_slim()
-        .apt_install(["ffmpeg"])
-        .pip_install(["openai-whisper", "boto3", "fastapi[standard]", "pydantic", "cryptography"]),
-    gpu="A10G",
-    timeout=300, # 5m
-    secrets=[modal.Secret.from_name("opencut-r2-secrets")]
-)
-@modal.fastapi_endpoint(method="POST")
-def transcribe_audio(request: TranscribeRequest):
-    import whisper
-    import boto3
-    import tempfile
     import os
     import json
     

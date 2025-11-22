@@ -74,7 +74,7 @@ export function AREffectsPanel() {
 
     ctx.drawImage(video, 0, 0, videoSize.width, videoSize.height);
 
-    canvas.toBlob((blob) => {
+    canvas.toBlob((blob: Blob | null) => {
       if (blob) {
         const url = URL.createObjectURL(blob);
         addSnapshot(url);
@@ -158,6 +158,7 @@ export function AREffectsPanel() {
             videoWidth={videoSize.width}
             videoHeight={videoSize.height}
             glowIntensity={glowIntensity}
+            emotionTriggerEnabled={emotionTriggerEnabled}
           />
         )}
 

@@ -6,6 +6,7 @@ interface FaceLandmarks {
   noseBridge: { x: number; y: number }[];
   allLandmarks: { x: number; y: number }[];
   faceRotation: { pitch: number; yaw: number; roll: number };
+  faceBlendshapes: any[];
 }
 
 interface UseFaceDetectionOptions {
@@ -39,10 +40,14 @@ export function useFaceDetection(
         noseBridge: [],
         allLandmarks: [],
         faceRotation: { pitch: 0, yaw: 0, roll: 0 },
+        faceBlendshapes: [],
       };
     }
 
     const face = results.faceLandmarks[0];
+    const blendshapes = results.faceBlendshapes && results.faceBlendshapes.length > 0 
+      ? results.faceBlendshapes[0].categories 
+      : [];
 
     const leftEyeIndices = [33, 133, 160, 159, 158, 157, 173];
     const rightEyeIndices = [362, 263, 387, 386, 385, 384, 380];
@@ -78,6 +83,7 @@ export function useFaceDetection(
       noseBridge,
       allLandmarks,
       faceRotation: { pitch, yaw, roll },
+      faceBlendshapes: blendshapes,
     };
   }, []);
 

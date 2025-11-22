@@ -18,6 +18,7 @@ import { RenameProjectDialog } from "../rename-project-dialog";
 import { DeleteProjectDialog } from "../delete-project-dialog";
 import { useRouter } from "next/navigation";
 import { FaDiscord } from "react-icons/fa6";
+import { AREffectsDialog } from "./ar-effects/ar-effects-dialog";
 import { PanelPresetSelector } from "./panel-preset-selector";
 import { ExportButton } from "./export-button";
 import { ThemeToggle } from "../theme-toggle";
@@ -113,6 +114,7 @@ export function EditorHeader() {
 
   const rightContent = (
     <nav className="flex items-center gap-2">
+      <AREffectsDialog />
       <PanelPresetSelector />
       <KeyboardShortcutsHelp />
       <ExportButton />
